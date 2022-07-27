@@ -1,17 +1,5 @@
 package com.example.demowidget.ui;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-import androidx.core.view.MenuItemCompat;
-import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStore;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -25,7 +13,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.SearchView;
-import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.demowidget.R;
 import com.example.demowidget.data.model.DirectGeocoding;
@@ -46,7 +41,6 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.OnItemC
     private MainViewModel viewModel;
     private MyAdapter adapter;
     private List<DirectGeocoding> geocodingList = new ArrayList<>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -136,6 +130,7 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.OnItemC
                 checkPermission();
             }
         });
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)

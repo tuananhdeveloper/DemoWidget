@@ -78,6 +78,7 @@
             android:text="Pick widget"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_temp"/>
+            app:layout_constraintTop_toBottomOf="@id/text_temp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

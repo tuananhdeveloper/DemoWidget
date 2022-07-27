@@ -18,7 +18,7 @@
         android:theme="@style/Theme.DemoWidget"
         tools:targetApi="31">
         <receiver
-            android:name=".WeatherWidget"
+            android:name=".ui.WeatherWidget"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -38,6 +38,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name=".ui.service.WeatherService" />
     </application>
 
 </manifest>

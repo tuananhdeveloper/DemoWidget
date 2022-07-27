@@ -3,30 +3,22 @@ package com.example.demowidget.ui;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.app.Activity;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetHost;
-import android.appwidget.AppWidgetHostView;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProviderInfo;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.demowidget.R;
-import com.example.demowidget.WeatherWidget;
-import com.example.demowidget.data.model.CurrentWeather;
 import com.example.demowidget.data.model.DirectGeocoding;
 import com.example.demowidget.databinding.ActivityWeatherBinding;
 import com.example.demowidget.viewmodel.WeatherViewModel;
-
-import java.util.List;
 
 public class WeatherActivity extends AppCompatActivity {
 
@@ -98,6 +90,9 @@ public class WeatherActivity extends AppCompatActivity {
             }
             else {
                 int appWidgetId = this.mAppWidgetHost.allocateAppWidgetId();
+                ComponentName myWidgetProvider =
+                        new ComponentName(this, WeatherWidget.class);
+                this.mAppWidgetManager.bindAppWidgetIdIfAllowed(appWidgetId, myWidgetProvider);
                 Intent pickIntent = new Intent(AppWidgetManager.ACTION_APPWIDGET_PICK);
                 pickIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
                 startActivityForResult(pickIntent, R.id.APPWIDGET_HOST_ID);
@@ -105,6 +100,10 @@ public class WeatherActivity extends AppCompatActivity {
         }
         else {
             int appWidgetId = this.mAppWidgetHost.allocateAppWidgetId();
+            ComponentName myWidgetProvider =
+                    new ComponentName(this, WeatherWidget.class);
+            this.mAppWidgetManager.bindAppWidgetIdIfAllowed(appWidgetId, myWidgetProvider);
+
             Intent pickIntent = new Intent(AppWidgetManager.ACTION_APPWIDGET_PICK);
             pickIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
             startActivityForResult(pickIntent, R.id.APPWIDGET_HOST_ID);
@@ -123,17 +122,7 @@ public class WeatherActivity extends AppCompatActivity {
             startActivityForResult(intent, R.id.REQUEST_CREATE_APPWIDGET);
         } else {
             // Otherwise just add it
-            createWidget(data);
         }
-    }
-
-    public void createWidget(Intent data) {
-        Bundle extras = data.getExtras();
-        int appWidgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, -1);
-        AppWidgetProviderInfo appWidgetInfo = mAppWidgetManager.getAppWidgetInfo(appWidgetId);
-        AppWidgetHostView hostView = mAppWidgetHost.createView(this, appWidgetId, appWidgetInfo);
-        hostView.setAppWidget(appWidgetId, appWidgetInfo);
-        binding.mainLayout.addView(hostView);
     }
 
 }

@@ -1,19 +1,36 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     style="@style/Widget.DemoWidget.AppWidget.Container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:theme="@style/Theme.DemoWidget.AppWidgetContainer">
 
+    <ImageView
+        android:id="@+id/image_weather"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="TODO"
+        android:padding="16dp"
+        android:scaleType="centerCrop" />
+
     <TextView
-        android:id="@+id/appwidget_text"
-        style="@style/Widget.DemoWidget.AppWidget.InnerView"
+        android:id="@+id/text_temp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_margin="8dp"
-        android:contentDescription="@string/appwidget_text"
-        android:text="@string/appwidget_text"
-        android:textSize="24sp"
-        android:textStyle="bold|italic" />
+        android:layout_below="@id/image_weather"
+        android:layout_marginTop="16dp"
+        android:text="40"
+        android:textColor="@color/purple_700"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/text_location_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_temp"
+        android:textColor="@color/purple_500"
+        android:textSize="18sp"
+        android:text="Ha Noi" />
 </RelativeLayout>
